@@ -32,7 +32,7 @@
         function createCombo(){
 
         $("#combo-container").createCombobox( data, createOptions() ).
-                unbind()
+                unbind().
                 bind("comboDataChanged", onDataChange);
 
         }
@@ -48,7 +48,7 @@
 </head>
 <body>
       <div style="width:760px; height:600px;margin: auto;">
-          <div id="combo-container" style="width: 200px;height: 22px"></div>
+          <div id="combo-container" style="width:400px;height: 30px"></div>
           <br />
           <br />
           <button id="createConbo"> Create Combo </button>
@@ -112,7 +112,7 @@
                 </tr>
                 <tr>
                     <td class="firstTD">Show result after this number of characters</td>
-                    <td><input id="showafter" type="text" value="0" /></td>
+                    <td><input  id="showafter" type="text" value="0" /></td>
                 </tr>
             </tbody>
         </table>
