@@ -3,16 +3,122 @@
 <html>
 <head>
     <title> Combo box demo </title>
+    <link href="css/comboBox.css"type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="javascript/jquery-1.6.1.js" ></script>
     <script type="text/javascript" src="javascript/Combobox.js" ></script>
+    <script type="text/javascript" src="javascript/data.js" ></script>
     <script type="text/javascript">
-        
-        $( "#combo-container").createCombobox();
+        function createOptions() {
+
+            var options = {
+                defaultText : $("#defaultText").val(),
+                maxDisplayResult: $.trim( $("#maxresult").val()) != "" ?parseInt($("#maxresult").val()) : 1000,
+                hideButton : $("input[name=combobutton]:checked").val()=="true"?true:false,
+                showLoadingIcon : $("input[name=showLoadingIcon]:checked").val()=="true"?true:false,
+                hintText : $("#hintText").val(),
+                inputBoxCSS : $.trim( $("#inputBoxCSS").val()) != "" ?$.parseJSON($("#inputBoxCSS").val()) : {},
+                shortKey : $.trim( $("#shortKey").val()) != "" ? $("#shortKey").val() : "ctrl + shift + c",
+                ignoreNumberOfCharacters : $.trim($("#showafter").val()) != ""?parseInt($("#showafter").val()) : 0,
+                noFillUpAtStart : $("input[name=noFillUpAtStart]:checked").val() == "true" ? true : false,
+                scroll : $("input[name=scroll]:checked").val() == "true" ? false : true
+            };
+        return options;
+        }
+        function onDataChange(e, ret ){
+
+             $("#current").html("key : "+ret.k+" value: "+ ret.v );
+        }
+
+        function createCombo(){
+
+        $("#combo-container").createCombobox( data, createOptions() ).
+                unbind()
+                bind("comboDataChanged", onDataChange);
+
+        }
+        $(document).ready(function(){
+            $( "#createConbo" ).click( createCombo );
+            createCombo();
+
+        });
+
+
+
     </script>
 </head>
 <body>
       <div style="width:760px; height:600px;margin: auto;">
           <div id="combo-container" style="width: 200px;height: 22px"></div>
+          <br />
+          <br />
+          <button id="createConbo"> Create Combo </button>
+          <br />
+          <br />
+          <div id="current"> </div>
+        <div style="clear: both;">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="firstTD">Default text( from the list only  ) </td>
+                    <td><input id="defaultText" type="text" value="Golf Courses" /> </td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Max results at a time </td>
+                    <td><input id="maxresult" type="text" value="1000" /></td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Hide combo button </td>
+                    <td>
+                            <input name="combobutton" type="radio" value="true" />true
+                            <input checked="checked" name="combobutton" type="radio" value="false" /> false
+                    </td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Show loading icon </td>
+                    <td>
+                        <input name="showLoadingIcon" type="radio" value="true" />true
+                        <input checked="checked" name="showLoadingIcon" type="radio" value="false" /> false
+                    </td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Fill no data at init</td>
+                    <td>
+                        <input name="noFillUpAtStart" type="radio" value="true" />true
+                        <input checked="checked" name="noFillUpAtStart" type="radio" value="false" /> false
+                    </td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Hint text</td>
+                    <td><input id="hintText" type="text" value="" /></td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Css for input box </td>
+                    <td><input id="inputBoxCSS" type="text" value='{"border": "1px solid black"}' /></td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Tab index </td>
+                    <td><input id="inputTabIndex" type="text" value="-1" /></td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Short key </td>
+                    <td><input id="shortKey" type="text" value="ctrl + shift + c" /></td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Hide scroll bar </td>
+                    <td>
+                        <input name="scroll" type="radio" value="true" />true
+                        <input checked="checked" name="scroll" type="radio" value="false" /> false
+                    </td>
+                </tr>
+                <tr>
+                    <td class="firstTD">Show result after this number of characters</td>
+                    <td><input id="showafter" type="text" value="0" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
       </div>
+
+
 </body>
 </html>

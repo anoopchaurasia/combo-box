@@ -1,0 +1,73 @@
+
+.input_combo {
+	height: 100%;
+	font-size: 13px;
+	padding: 0 0 0 4px;
+	margin: 0;
+	width: 98%;
+	left: 0;
+	position: relative;
+}
+
+.combo_popup {
+	position: absolute;
+	background-color: White;
+	max-height: 200px;
+	z-index: 999;
+	width: inherit;
+	font-size: 12px;
+	display: block;
+	padding-left: 4px;
+	overflow: hidden;
+	width: 98%;
+	left: 0;
+	clear: both;
+	border: 1px solid #cccccc
+}
+
+.combo_popup * {
+	margin: 0;
+	padding: 0;
+}
+
+.combo_btn {
+	background-image: url("trigger.gif"); /** sprite-ref: vert;*/
+	background-repeat: no-repeat;
+	height: 20px;
+	position: absolute;
+	right: -5px;
+	top: 0;
+	width: 17px;
+}
+
+.combo-loading {
+    background-image: url(" loading_icon.gif");
+    background-position: -5px -9px;
+    background-repeat: no-repeat;
+    height: 18px;
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    width: 24px;
+}
+
+.combo_popup li {
+	white-space: nowrap;
+	text-align: left;
+}
+
+.selected {
+	background-color: #3B71C2;
+	color: white;
+	padding-left: 2px;
+	font-size: 12px;
+}
+
+.combo_popup_scroll {
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.combo_popup_no_scroll {
+	overflow: hidden;
+}
